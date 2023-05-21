@@ -1,13 +1,14 @@
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 import cls from "classnames";
-import CountUp from "react-countup";
+import CountUp, { useCountUp } from "react-countup";
+// import CountUp from "react-countup";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function Home() {
   return (
-    <main className="py-14">
-      <section className="flex justify-between items-start">
+    <main className="py-10">
+      <section className="flex justify-between items-center">
         <aside>
           <section>
             <h4
@@ -38,7 +39,7 @@ export default function Home() {
             <h4 className={cls("uppercase text-[12px]", poppins.className)}>
               Our community
             </h4>
-            <div className="flex">
+            <div className="flex my-3">
               <ul className="flex">
                 <li className="w-[40px] h-[40px] bg-black rounded-full"></li>
                 <li className="w-[40px] -translate-x-3 h-[40px] shadow-white shadow-md bg-black rounded-full"></li>
@@ -51,7 +52,9 @@ export default function Home() {
                   suffix="K+"
                   duration={10}
                 />
-                <span className="block -translate-y-2 text-gray-500 text-[12px]">Book lovers joined</span>
+                <span className="block -translate-y-2 text-gray-500 text-[12px]">
+                  Book lovers joined
+                </span>
               </p>
             </div>
           </aside>
