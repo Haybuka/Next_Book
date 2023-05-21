@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Poppins } from "next/font/google";
 import cls from "classnames";
 import styles from "./genre.module.css";
+import Link from "next/link";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 const Genre = () => {
@@ -12,10 +13,10 @@ const Genre = () => {
         Most Popular Reads of the Year
       </p>
 
-      <p className="text-center">
+      <Link href="/books" className="block text-center">
         <span className={styles.explore}>Explore now</span>
         <span className={styles.explore_icon}> -&gt;</span>
-      </p>
+      </Link>
     </section>
   );
 };

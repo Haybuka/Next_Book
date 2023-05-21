@@ -2,21 +2,28 @@ import Image from "next/image";
 import { Poppins } from "next/font/google";
 import cls from "classnames";
 import styles from "./carousel.module.css";
+import { Books } from "@/pages/api";
+import Link from "next/link";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
-const Carousel = () => {
+const Carousel = ({ books }: Books) => {
+ 
   return (
     <section className={styles.carousel}>
-      <div className={styles.card}>here</div>
-      <div className={styles.card}>here</div>
-      <div className={styles.card}>here</div>
-      <div className={styles.card}>here</div>
-      <div className={styles.card}>here</div>
-      <div className={styles.card}>here</div>
-      <div className={styles.card}>here</div>
-      <div className={styles.card}>here</div>
-      <div className={styles.card}>here</div>
-      <div className={styles.card}>here</div>
+      {books.slice(1,8).map((book) => (
+        <Link key={book.id} href={`/books/${book.id}`} className={styles.card}>
+          <article>
+            <Image
+              src={book.image}
+              height={200}
+              width={260}
+              alt={book.title}
+            />
+         
+          </article>
+        </Link>
+      ))}
+  
     </section>
   );
 };

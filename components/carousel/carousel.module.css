@@ -10,7 +10,7 @@
     
   flex-shrink: 0;
   scroll-snap-align: start;
-  height: 300px;
-  width: 300px;
+  /* height: 300px;
+  width: 300px; */
   background-color: #000;
 }
