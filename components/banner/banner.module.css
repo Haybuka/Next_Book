@@ -1,0 +1,32 @@
+.explore {
+  @apply inline-block border py-1 text-[14px] cursor-pointer px-3 rounded-full border-black hover:bg-black hover:text-white transition-all;
+}
+
+.explore_icon {
+  @apply inline-block border py-1 text-[14px] mx-3 px-4 rounded-full border-black text-white bg-black;
+}
+
+.banner {
+  @apply md:flex justify-between items-center h-[500px];
+  
+}
+
+.banner_img{
+  @apply relative;
+}
+
+.banner_img::after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  /* background: url('/images/book.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; */
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: 1px solid white;
+  content: '';
+}

@@ -1,0 +1,7 @@
+.explore {
+    @apply inline-block border py-1 text-[14px] cursor-pointer px-3 rounded-full border-black hover:bg-black hover:text-white transition-all;
+  }
+  
+  .explore_icon {
+    @apply inline-block border py-1 text-[14px] mx-3 px-4 rounded-full border-black text-white bg-black;
+  }

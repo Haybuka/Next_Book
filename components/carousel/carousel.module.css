@@ -1,0 +1,16 @@
+.carousel {
+  overflow: auto;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+  /* overflow-x: hidden; */
+}
+
+.card {
+    
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  height: 300px;
+  width: 300px;
+  background-color: #000;
+}
