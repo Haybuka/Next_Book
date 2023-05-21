@@ -12,12 +12,13 @@ const Carousel = ({ books }: Books) => {
     <section className={styles.carousel}>
       {books.slice(1,8).map((book) => (
         <Link key={book.id} href={`/books/${book.id}`} className={styles.card}>
-          <article>
+          <article className="flex justify-center">
             <Image
               src={book.image}
-              height={200}
+              height={100}
               width={260}
               alt={book.title}
+             
             />
          
           </article>

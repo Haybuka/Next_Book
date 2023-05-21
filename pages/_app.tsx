@@ -7,6 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <div className="md:px-[60px] lg:px-[150px]">
       <Index />
       <Component {...pageProps} />
+      <Index />
     </div>
   );
 }

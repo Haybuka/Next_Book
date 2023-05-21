@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import cls from "classnames";
 import CountUp, { useCountUp } from "react-countup";
 import styles from './banner.module.css'
+import Button from "../actionButton/button";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 const Banner = () => {
@@ -24,15 +25,8 @@ const Banner = () => {
             Not sure what to read next?, <br /> Explore our catalog of public
             domain books.
           </p>
-          <p>
-            <span className={styles.explore}>
-              Explore now
-            </span>
-            <span className={styles.explore_icon}>
-              {" "}
-              -&gt;
-            </span>
-          </p>
+          <Button href="/books" text="Explore now" />
+
         </section>
         <aside className="my-6">
           <h4 className={cls("uppercase text-[12px]", poppins.className)}>

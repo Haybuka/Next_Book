@@ -1,0 +1,9 @@
+.trending{
+    @apply bg-white pt-10 rounded-2xl my-10 relative;
+}
+
+
+.trending::after{
+    @apply absolute top-0 left-0 h-1/2 w-full bg-gray-200 content-[''] rounded-2xl;
+
+}
