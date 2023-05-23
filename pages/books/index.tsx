@@ -4,20 +4,18 @@ import React, { useState } from "react";
 import styles from "../../styles/books.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import _getRecentBooks from "@/lib/getRecent";
+// import _getRecentBooks from "@/lib/getRecent";
 import { Books } from "../api";
+import { _getRecentBooks } from "@/lib/getRecent";
+import { downloadBoolean } from "@/lib/downloadBoolean";
 
 export async function getStaticProps() {
   //api request goes here
   //ssg, runs at build time
   const { books } = await _getRecentBooks();
 
-  const newbook = books.map((book) => {
-    return {
-      ...book,
-      downloaded: false,
-    };
-  });
+  const newbook = downloadBoolean(books);
+
   return {
     props: {
       books: newbook,
