@@ -3,12 +3,12 @@
 }
 
 .grid_item {
-@apply overflow-hidden relative rounded-lg cursor-pointer flex justify-center items-center col-span-4 h-[200px] bg-black text-white
+@apply shadow-md overflow-hidden relative rounded-lg cursor-pointer flex justify-center items-center col-span-3 h-[200px] text-white
 }
 
 
-.grid_item:nth-of-type(4){
-    @apply  col-span-8 bg-red-400;
+.grid_item:nth-of-type(5){
+    @apply  col-span-6;
 }
 
 .grid_item:hover{

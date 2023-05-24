@@ -9,15 +9,17 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 import React from "react";
 import { DocumentArrowDownIcon } from "./documentDownload";
 import Link from "next/link";
+import Image from "next/image";
 
 type TabPropType = {
   category: Book[];
   handleCategorySwitch: (category: string) => void;
+  isLoading: boolean;
 };
 
-const Tabs = ({ category, handleCategorySwitch }: TabPropType) => {
-  let categories = ["coding", "Adventure", "history", "art", "engineering"];
-  console.log({ category });
+const Tabs = ({ category, handleCategorySwitch, isLoading }: TabPropType) => {
+  let categories = ["coding", "Politics", "history", "art", "engineering"];
+  console.log({ isLoading });
   const handleClick = (category: string) => {
     handleCategorySwitch(category);
   };
@@ -59,17 +61,34 @@ const Tabs = ({ category, handleCategorySwitch }: TabPropType) => {
         <Tab.Panels className="py-6 ">
           {categories.map((books) => (
             <Tab.Panel className={styles.grid_container} key={books}>
-              {category.map((book) => (
-                <Link
-                  key={book.id}
-                  href={`/books/${book.id}`}
-                  className={styles.grid_item}
-                >
-                  <h4> {book.title}</h4>
+              {category.map((book) =>
+                !isLoading ? (
+                  <Link
+                    key={book.id}
+                    href={`/books/${book.id}`}
+                    className={cls(styles.grid_item, " px-6")}
+                  >
+                    <Image
+                      src={book.image}
+                      height={0}
+                      width={100}
+                      alt={book.title}
+                      className={`w-1/4`}
+                    />
+                    <div>
+                      <h4 className="px-2 text-black uppercase font-semibold mb-2 text-[16px]"> {book.title}</h4>
+                      <h4 className="px-2 text-black"> {book.authors}</h4>
+                    </div>
 
-                  <DocumentArrowDownIcon />
-                </Link>
-              ))}
+                    <DocumentArrowDownIcon />
+                  </Link>
+                ) : (
+                  <p
+                    key={book.id}
+                    className={cls(styles.grid_item, "bg-gray-400")}
+                  ></p>
+                )
+              )}
             </Tab.Panel>
           ))}
         </Tab.Panels>

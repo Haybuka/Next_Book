@@ -15,39 +15,50 @@ export async function getStaticProps() {
   //ssg, runs at build time
   try {
     const { books } = await _getRecentBooks();
-    const {books:categories} = await _getCategories('sex')
+    const { books: categories } = await _getCategories("sex");
     const newbook = downloadBoolean(books);
 
-   
     return {
       props: {
         books: newbook,
-        categories
-      }
+        categories,
+      },
     };
   } catch (error) {
     return {
       props: {
         books: [],
-        
       },
     };
   }
 }
 
 type HomePropType = {
-  books : Book[],
-  categories : Book[]
-}
+  books: Book[];
+  categories: Book[];
+};
 export default function Home({ books, categories }: HomePropType) {
   const [bookx, setBookx] = useState(books);
-  const [category, setCategory] = useState(categories.slice(0,5));
+  const [category, setCategory] = useState(categories.slice(0, 7));
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleCategorySwitch = (category:string) => {
-  console.log({category})
-  }
- 
-console.log({categories})
+  const handleCategorySwitch = async (category: string) => {
+    setIsLoading((previous) => !previous);
+    const searchedCategory = await _getCategories(category);
+    let startValue = Math.floor(
+      Math.random() * searchedCategory.books.length
+    );
+
+    setCategory(
+      searchedCategory.books.slice(
+        Math.max(startValue, 7),
+        Math.max(startValue, 7) + 7
+      )
+    );
+    setIsLoading((previous) => !previous);
+
+    console.log({ startValue });
+  };
   return (
     <main className="py-10">
       <Banner />
@@ -57,7 +68,11 @@ console.log({categories})
       </div>
       <BookClub />
       {/* <BrowseGenres /> */}
-      <Tabs category={category} handleCategorySwitch={handleCategorySwitch}/>
+      <Tabs
+        category={category}
+        isLoading={isLoading}
+        handleCategorySwitch={handleCategorySwitch}
+      />
     </main>
   );
 }
